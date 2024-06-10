@@ -41,7 +41,7 @@ function register($username, $password, $role) {
         $conn->commit();
 
         // Fetch the user information to return
-        $userStmt = $conn->prepare("SELECT id, username, role FROM user WHERE id = :userId");
+        $userStmt = $conn->prepare("SELECT * FROM user WHERE id = :userId");
         $userStmt->bindParam(':userId', $userId);
         $userStmt->execute();
         $user = $userStmt->fetch(PDO::FETCH_ASSOC);
